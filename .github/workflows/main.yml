@@ -50,9 +50,9 @@ jobs:
       working-directory: ${{ env.TF_WORK_DIR }}
 
     - name: Terraform Plan
-      run: terraform plan -out=tfplan
+      run: terraform plan -out=./terraform/azure/vm/tfplan
       working-directory: ${{ env.TF_WORK_DIR }}
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve tfplan
+      run: terraform apply -auto-approve ./terraform/azure/vm/tfplan
