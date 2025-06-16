@@ -53,6 +53,7 @@ jobs:
       run: |
         pwd
         ls -ltra
+        mkdir -p terraform/azure/vm/tfplan
 
     - name: Terraform Plan
       run: terraform plan -out=terraform/azure/vm/tfplan
