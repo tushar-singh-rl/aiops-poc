@@ -53,12 +53,12 @@ jobs:
       run: |
         pwd
         ls -ltra
-        mkdir -p terraform/azure/vm/tfplan
+        touch tfplan
 
     - name: Terraform Plan
-      run: terraform plan -out=terraform/azure/vm/tfplan
+      run: terraform plan -out=tfplan
       working-directory: ${{ env.TF_WORK_DIR }}
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: terraform apply -auto-approve terraform/azure/vm/tfplan
+      run: terraform apply -auto-approve tfplan
