@@ -49,14 +49,14 @@ jobs:
       run: terraform validate
       working-directory: ${{ env.TF_WORK_DIR }}
 
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan
+      working-directory: ${{ env.TF_WORK_DIR }}
+
     - name: Check Plan File
       run: |
         ls -la tfplan
         file tfplan
-      working-directory: ${{ env.TF_WORK_DIR }}
-
-    - name: Terraform Plan
-      run: terraform plan -out=tfplan
       working-directory: ${{ env.TF_WORK_DIR }}
 
     - name: Terraform Apply
