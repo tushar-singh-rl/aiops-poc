@@ -14,7 +14,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      run: |
+          ls -la
+          pwd
+    - uses: actions/checkout@v3
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
