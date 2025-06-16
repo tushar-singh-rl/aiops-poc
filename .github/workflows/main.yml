@@ -20,6 +20,11 @@ jobs:
       run: |
           ls -la
           pwd
+    
+    - name: Check SSH key exists
+      run: |
+        ls -la ~/.ssh/id_rsa.pub
+        # or ls -la ./keys/id_rsa.pub
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
