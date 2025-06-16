@@ -49,11 +49,11 @@ jobs:
       run: terraform validate
       working-directory: ${{ env.TF_WORK_DIR }}
 
-    - name: Check current directory
+    - name: Check Plan File
       run: |
-        pwd
-        ls -ltra
-        touch tfplan
+        ls -la tfplan
+        file tfplan
+      working-directory: ${{ env.TF_WORK_DIR }}
 
     - name: Terraform Plan
       run: terraform plan -out=tfplan
@@ -62,3 +62,4 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve tfplan
+      working-directory: ${{ env.TF_WORK_DIR }}
