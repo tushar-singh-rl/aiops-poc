@@ -49,6 +49,11 @@ jobs:
       run: terraform validate
       working-directory: ${{ env.TF_WORK_DIR }}
 
+    - name: Check current directory
+      run: |
+        pwd
+        ls -ltra
+
     - name: Terraform Plan
       run: terraform plan -out=./terraform/azure/vm/tfplan
       working-directory: ${{ env.TF_WORK_DIR }}
