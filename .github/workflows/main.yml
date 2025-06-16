@@ -20,7 +20,12 @@ jobs:
       run: |
           ls -la
           pwd
-    
+
+    - name: Generate SSH key
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+
     - name: Check SSH key exists
       run: |
         ls -la ~/.ssh/id_rsa.pub
